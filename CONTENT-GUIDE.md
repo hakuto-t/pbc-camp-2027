@@ -45,7 +45,7 @@
 
 | ファイル | CONTENT ID | 内容 |
 |---|---|---|
-| `index.html`（参加者） | purpose / overview / program / guide / access / first / faq / cancel / contact | 参加者向け全セクション。faqにAPPENDあり |
+| `index.html`（参加者） | purpose / theme / overview / program / guide / access / first / faq / cancel / contact / updated | 参加者向け全セクション。faqにAPPENDあり。**updated=フッターの最終更新日（参加者ページを編集したら必ず当日日付に書き換える）** |
 | `ops-…/index.html` | pages | ページ一覧カード（他は自動生成） |
 | `ops-…/overview.html` | basic / venue-status / policy / results2026 / notation | 概要・会場ステータス・方針 |
 | `ops-…/venue.html` | kodo / kakurinbo / kuonji / access / visits | 会場3件＋下見記録（APPEND） |
