@@ -9,12 +9,23 @@ PBC合宿2027（2027年4月27日（火）・身延山・約200名規模）の情
 
 ## URLと取り扱い区分
 
-| 区分 | パス | 公開URL（デプロイ後） | 共有してよい相手 |
+| 区分 | パス | 公開URL | 共有してよい相手 |
 |---|---|---|---|
-| 参加者ページ | `/index.html` | `https://<user>.github.io/<repo>/` | 参加者・LINE配信可 |
-| 運営ハブ | `/ops-jx9rmblg/` | `https://<user>.github.io/<repo>/ops-jx9rmblg/` | **運営メンバーのみ** |
+| 参加者ページ | `/index.html` | `https://hakuto-t.github.io/pbc-camp-2027/` | 参加者・LINE配信可 |
+| 運営ハブ | `/ops-jx9rmblg/` | `https://hakuto-t.github.io/pbc-camp-2027/ops-jx9rmblg/` | **運営メンバーのみ** |
 
-**セキュリティモデル（秘匿URL方式）**: GitHub Pagesは全URLが技術的に公開のため、運営ハブは「推測不能なランダムパス＋検索エンジン除外＋参加者ページから一切リンクしない」ことで守っている。URLを知られたら見られる前提で、載せる情報を線引きする（CONTENT-GUIDE.md参照）。
+リポジトリ: `https://github.com/hakuto-t/pbc-camp-2027`（**public**。2026-07-04にデプロイ）
+
+**セキュリティモデル（秘匿URL方式・重要な変更あり）**: 当初はprivateリポジトリを想定していたが、無料プランではprivateリポジトリでGitHub Pagesが使えない制約があり、白都さんの判断で**publicリポジトリ**に変更してデプロイした。
+
+これにより秘匿性の前提が変わっている点に注意:
+
+- 従来の想定: 「URLを知らなければ運営ハブには辿り着けない」
+- **現在の実態**: リポジトリがpublicのため、`https://github.com/hakuto-t/pbc-camp-2027/tree/main/ops-jx9rmblg` から**誰でもGitHub上でソース・フォルダ名を直接閲覧できる**。ランダムパス名も検索エンジン非表示（noindex/robots.txt）も、GitHubリポジトリの直接閲覧に対しては無力。
+
+したがって、**運営ハブに載せてよい情報の線引き（CONTENT-GUIDE.md）を、これまで以上に厳格に守ること**。個人連絡先・全員名簿・金額原本・内部数値は引き続き一切載せない。「URLを知った第三者」だけでなく「GitHubでリポジトリ名を見つけた誰か」にも見られ得る前提で運用する。
+
+より高い秘匿性が必要になった場合は、リポジトリをprivateに戻す（GitHub Pro等へのアップグレードが必要）か、Cloudflare Pages等の別ホスティングへの切替を検討する。
 
 ## フォルダ構成
 
@@ -43,7 +54,7 @@ HANDOVER.md           引き継ぎメモ（Git管理外）
 2. **参加者ページ・404から運営ハブへのリンク・言及禁止**（`ops-` という文字列を index.html / 404.html に書かない）
 3. 全HTMLの `noindex` メタ、運営ページの `no-referrer` メタ、`robots.txt` の**削除・変更禁止**
 4. `robots.txt` に個別パス（`Disallow: /ops-...`）を**書かない**（自己暴露になる）
-5. `_work/`・`HANDOVER.md` の**コミット禁止**（.gitignore済み。コミット＝全世界公開）
+5. `_work/`・`HANDOVER.md` の**コミット禁止**（.gitignore済み。**リポジトリがpublicのため、コミット＝GitHub上で誰でも閲覧可能**。ローカルのGit操作前に `git status` で混入していないか必ず確認する）
 6. 個人の電話番号・メールアドレス・住所・全メンバー実名名簿・請求書等の原本・内部数値（例: 348名）を**サイトに載せない**（権限管理されたGoogle Sheetsで管理しリンクする）
 7. 運営URLを短縮URLサービス・QRコード生成サービスに**通さない**（サービス側の台帳・解析画面から漏れる）
 8. `sitemap.xml` を作らない
@@ -74,17 +85,22 @@ grep -rn "348" --include="*.html" .
 git status --short
 ```
 
-## デプロイ手順（Codexが記載する）
+## デプロイ手順（初回デプロイ済み・2026-07-04）
 
-<!-- TODO(Codex): 初回デプロイ時にここへ手順を記載する。想定手順:
-  1. git init → private リポジトリ `pbc-camp-2027` を作成（GitHub Pagesはprivateでも公開される点に注意）
-  2. .github/workflows/static.yml を配置（2026の PBC合宿2026_運営資料/.github/workflows/static.yml を流用可）
-  3. GitHub Pages を有効化（Actions経由）
-  4. デプロイ後、index.html の OGP（og:url / og:image）を絶対URLに更新
-  5. このセクションに確定URL・運用手順を記載
--->
+1. `git init -b main` → `.gitignore`（HANDOVER.md・_work/除外）を確認した上で `git add -A` → commit
+2. `.github/workflows/static.yml` 配置（2026の `PBC合宿2026_運営資料/.github/workflows/static.yml` を流用。`branches: ["main"]` に変更、`lfs: true` は動画等がないため省略）
+3. `gh repo create hakuto-t/pbc-camp-2027 --private --source=. --remote=origin --push` でリポジトリ作成
+4. **private リポジトリのままでは無料プランでGitHub Pagesが有効化できない**（`422: Your current plan does not support GitHub Pages for this repository`）ことが判明。白都さんの判断で `gh repo edit hakuto-t/pbc-camp-2027 --visibility public --accept-visibility-change-consequences` によりpublicへ変更（詳しい経緯・残余リスクは上記「セキュリティモデル」参照）
+5. `gh api -X POST repos/hakuto-t/pbc-camp-2027/pages -f build_type=workflow` でPages有効化
+6. Actions再実行（`gh run rerun <run-id> --repo hakuto-t/pbc-camp-2027`）→ デプロイ成功
+7. 実URLでの200応答を確認済み: `https://hakuto-t.github.io/pbc-camp-2027/` と `.../ops-jx9rmblg/`
 
-（未記載。初回デプロイ時にCodexが記載する）
+**更新時のデプロイ**: `main` ブランチへの `git push` でActionsが自動デプロイする（`workflow_dispatch` でも手動実行可）。
+
+### 未対応（次回作業）
+
+- `index.html` の OGP（`og:url` / `og:image`）を絶対URL（`https://hakuto-t.github.io/pbc-camp-2027/...`）に更新（`<!-- TODO(OGP) -->` コメント箇所）
+- リポジトリをprivateに戻すか検討する場合は、GitHub Pro等へのアップグレードが前提
 
 ## 関連資料（ローカル）
 
