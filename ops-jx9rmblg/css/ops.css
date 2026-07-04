@@ -1,0 +1,336 @@
+/* ==========================================================================
+   PBC合宿2027 運営ハブ専用スタイル ops.css（site.cssの後に読み込む）
+   方針: デザイン言語は参加者ページと共通。余白と写真を情報密度に置き換える。
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. ベース差分
+   -------------------------------------------------------------------------- */
+.page-ops {
+  font-family: var(--font-sans);
+  font-size: .9375rem;
+  letter-spacing: .02em;
+  line-height: 1.8;
+}
+.page-ops h1, .page-ops h2 { font-family: var(--font-mincho); }
+.page-ops h3, .page-ops h4 { font-family: var(--font-sans); letter-spacing: .04em; }
+.page-ops h3 { font-size: 1.0625rem; font-weight: 700; }
+.page-ops h4 { font-size: .9375rem; font-weight: 700; }
+
+.page-ops .section { padding-block: 48px; }
+.page-ops .section + .section { padding-top: 0; }
+
+.page-ops .sec-head { margin-bottom: 24px; }
+.page-ops .sec-head__en { font-size: .625rem; }
+.page-ops .sec-head__title { font-size: 1.25rem; letter-spacing: .08em; }
+
+/* 運営ページはカード・テーブル面に白を許可 */
+.page-ops .card { background: var(--white); }
+
+/* --------------------------------------------------------------------------
+   2. 運営ヘッダー（常時和紙背景・透過なし）
+   -------------------------------------------------------------------------- */
+.ops-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--washi);
+  border-bottom: 1px solid var(--line);
+}
+.ops-header__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 56px;
+  padding-inline: clamp(16px, 3vw, 32px);
+}
+.ops-header__brand {
+  flex-shrink: 0;
+  font-family: var(--font-mincho);
+  font-size: .8125rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: var(--kon);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ops-header__brand .tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  font-family: var(--font-sans);
+  font-size: .625rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  color: var(--on-kon);
+  background: var(--kon);
+  border-radius: var(--radius);
+  vertical-align: .1em;
+}
+.ops-header__guest {
+  flex-shrink: 0;
+  font-size: .75rem;
+  color: var(--ink-muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ops-header__guest:hover { color: var(--kon); }
+
+/* ナビ（ops-nav.jsが生成） */
+.ops-nav {
+  display: flex;
+  gap: 2px;
+  padding-inline: clamp(8px, 2.4vw, 24px);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  border-top: 1px solid var(--line);
+}
+.ops-nav::-webkit-scrollbar { display: none; }
+.ops-nav a {
+  flex-shrink: 0;
+  padding: 10px 14px;
+  font-size: .8125rem;
+  letter-spacing: .04em;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+.ops-nav a:hover { color: var(--kon); }
+.ops-nav a.is-current {
+  color: var(--kon);
+  font-weight: 700;
+  border-bottom-color: var(--shu);
+}
+
+/* --------------------------------------------------------------------------
+   3. ページヒーロー（紺帯）
+   -------------------------------------------------------------------------- */
+.page-hero {
+  background: var(--kon-deep);
+  border-bottom: 1px solid rgba(177, 138, 68, .45);
+  padding: 40px 0 32px;
+}
+.page-hero__en {
+  margin: 0 0 10px;
+  font-family: var(--font-serif-en);
+  font-size: .6875rem;
+  font-weight: 500;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--kin-bright);
+}
+.page-hero__title {
+  font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  font-weight: 600;
+  letter-spacing: .1em;
+  line-height: 1.5;
+  color: var(--on-kon);
+}
+.page-hero__crumb {
+  margin: 12px 0 0;
+  font-size: .75rem;
+  letter-spacing: .04em;
+  color: var(--on-kon-muted);
+}
+.page-hero__crumb a { color: var(--on-kon-muted); text-decoration-color: rgba(168, 176, 194, .5); }
+.page-hero__crumb a:hover { color: var(--on-kon); }
+
+/* --------------------------------------------------------------------------
+   4. ステータスバッジ
+   -------------------------------------------------------------------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-family: var(--font-sans);
+  font-size: .6875rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  line-height: 1;
+  border-radius: var(--radius);
+  white-space: nowrap;
+}
+.badge__dot { width: 6px; height: 6px; border-radius: 50%; }
+.badge--todo   { color: var(--todo-text);   background: var(--todo-bg); }
+.badge--todo .badge__dot   { background: var(--todo-dot); }
+.badge--doing  { color: var(--doing-text);  background: var(--doing-bg); }
+.badge--doing .badge__dot  { background: var(--doing-dot); }
+.badge--done   { color: var(--ok-text);     background: var(--ok-bg); }
+.badge--done .badge__dot   { background: var(--ok-dot); }
+.badge--warn   { color: var(--warn-text);   background: var(--warn-bg); }
+.badge--warn .badge__dot   { background: var(--warn-dot); }
+.badge--danger { color: var(--danger-text); background: var(--danger-bg); }
+.badge--danger .badge__dot { background: var(--danger-dot); }
+
+/* --------------------------------------------------------------------------
+   5. ダッシュボード部品
+   -------------------------------------------------------------------------- */
+/* サマリー数値カード */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 20px 24px;
+}
+.stat-card__label {
+  margin: 0;
+  font-size: .75rem;
+  letter-spacing: .08em;
+  color: var(--ink-muted);
+}
+.stat-card__value {
+  margin: 6px 0 0;
+  font-family: var(--font-serif-en);
+  font-size: 2rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .04em;
+  line-height: 1.2;
+  color: var(--kon);
+}
+.stat-card__value small {
+  font-family: var(--font-sans);
+  font-size: .75rem;
+  letter-spacing: .06em;
+  color: var(--ink-muted);
+  margin-left: 4px;
+}
+
+/* TODO一覧（ops-config.jsから生成） */
+.todo-list { list-style: none; margin: 0; padding: 0; }
+.todo-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 4px;
+  border-bottom: 1px solid var(--line);
+  font-size: .875rem;
+}
+.todo-list li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--warn-dot);
+  transform: translateY(-2px);
+}
+.todo-list .todo-page {
+  flex-shrink: 0;
+  font-size: .6875rem;
+  color: var(--ink-muted);
+}
+
+/* 更新履歴 */
+.update-list { list-style: none; margin: 0; padding: 0; }
+.update-list li {
+  display: flex;
+  gap: 14px;
+  padding: 8px 4px;
+  border-bottom: 1px solid var(--line);
+  font-size: .8125rem;
+}
+.update-list time {
+  flex-shrink: 0;
+  font-family: var(--font-serif-en);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-muted);
+}
+
+/* --------------------------------------------------------------------------
+   6. 追記式ログ・引き継ぎ
+   -------------------------------------------------------------------------- */
+/* 引き継ぎメモ（2026からの転記） */
+.handover-box {
+  background: var(--washi-deep);
+  border-left: 3px solid var(--kin);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 18px 22px;
+  font-size: .875rem;
+}
+.handover-box p:first-child { margin-top: 0; }
+.handover-box .caption { margin-top: .6em; }
+
+/* インフォボックス */
+.info-box {
+  background: var(--doing-bg);
+  border: 1px solid rgba(78, 124, 155, .3);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-size: .8125rem;
+  color: var(--doing-text);
+}
+.warn-box {
+  background: var(--warn-bg);
+  border: 1px solid rgba(176, 138, 46, .35);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-size: .8125rem;
+  color: var(--warn-text);
+}
+
+/* --------------------------------------------------------------------------
+   7. フッター（運営ページ簡易版）
+   -------------------------------------------------------------------------- */
+.ops-footer {
+  margin-top: 64px;
+  padding: 28px 0 36px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  font-size: .75rem;
+  color: var(--ink-muted);
+}
+.ops-footer a { color: var(--ink-muted); }
+
+/* --------------------------------------------------------------------------
+   8. レスポンシブ
+   -------------------------------------------------------------------------- */
+@media (max-width: 700px) {
+  .ops-header__row { height: 52px; }
+  .ops-header__brand { font-size: .75rem; }
+  .ops-header__guest { display: none; }
+  .page-hero { padding: 28px 0 24px; }
+  .stat-card__value { font-size: 1.625rem; }
+}
+
+/* --------------------------------------------------------------------------
+   9. 印刷（運営ページは紙で現場に持ち出す想定）
+   -------------------------------------------------------------------------- */
+@page { size: A4 portrait; margin: 14mm; }
+@media print {
+  body { background: #fff !important; color: #000; font: 10.5pt/1.6 var(--font-sans); }
+  body::before { display: none; }
+  .ops-header, .ops-footer, .skip-link { display: none; }
+  .page-hero {
+    background: none;
+    border-bottom: 2px solid #000;
+    padding: 0 0 8px;
+  }
+  .page-hero__en { color: #555; }
+  .page-hero__title { color: #000; }
+  .page-hero__crumb { display: none; }
+  .card, .stat-card, .note-box, .handover-box, .info-box, .warn-box {
+    background: none;
+    box-shadow: none;
+    border: 1px solid #999;
+    break-inside: avoid;
+  }
+  .table th { background: none; color: #000; }
+  tr, .tl-item, .faq { break-inside: avoid; }
+  .badge { background: none; border: 1px solid #666; color: #000; }
+  .badge__dot { display: none; }
+  a { color: #000; text-decoration: none; }
+  .table-wrap--scroll { overflow: visible; }
+  .table-wrap--scroll .table { min-width: 0; }
+  .table-wrap--scroll::after { display: none; }
+}

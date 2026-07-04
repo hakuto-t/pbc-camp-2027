@@ -1,0 +1,8 @@
+# ローカル専用（コミット＝全世界公開になるため、内部資料は必ずここで除外する）
+HANDOVER.md
+_work/
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store

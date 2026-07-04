@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>チーム一覧｜PBC合宿2027 運営ハブ</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='6'%20fill='%231C2B4A'/%3E%3Crect%20x='18'%20y='30'%20width='28'%20height='3'%20fill='%23C9A45C'/%3E%3Crect%20x='29'%20y='14'%20width='6'%20height='13'%20fill='%23C9502F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../css/ops.css">
+<script src="../js/ops-config.js"></script>
+<script src="../js/ops-nav.js" defer></script>
+</head>
+<body class="page-ops" data-depth="1">
+
+<header class="ops-header">
+  <div class="ops-header__row">
+    <a class="ops-header__brand" href="../index.html">PBC合宿2027 in 身延山<span class="tag">運営</span></a>
+    <a class="ops-header__guest" href="../../index.html">参加者ページを開く →</a>
+  </div>
+  <nav class="ops-nav" aria-label="運営メニュー"><!-- ops-nav.js が生成 --></nav>
+  <noscript><p style="padding:8px 24px;margin:0;font-size:12px;">JavaScriptが無効のためメニューを表示できません。<a href="../index.html">ハブトップ</a>から各ページへ移動してください。</p></noscript>
+</header>
+
+<div class="page-hero">
+  <div class="container container--wide">
+    <p class="page-hero__en" aria-hidden="true">Teams</p>
+    <h1 class="page-hero__title">チーム一覧</h1>
+    <p class="page-hero__crumb"><a href="../index.html">運営ハブ</a> ／ チーム一覧</p>
+  </div>
+</div>
+
+<main>
+  <div class="container container--wide">
+
+    <!-- ============================================================ -->
+    <!-- 運営チーム一覧（ops-config.js の teams 配列から自動生成） -->
+    <!-- ============================================================ -->
+    <section class="section" id="teams">
+      <div class="sec-head">
+        <p class="sec-head__en" aria-hidden="true">Teams</p>
+        <h2 class="sec-head__title">運営チーム</h2>
+      </div>
+      <div class="card-grid" id="teamsGrid"><!-- ops-nav.js が生成 --></div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- CONTENT:add | チームの追加・変更 -->
+    <!-- ============================================================ -->
+    <section class="section" id="add">
+      <div class="sec-head">
+        <p class="sec-head__en" aria-hidden="true">How to Add</p>
+        <h2 class="sec-head__title">チームの追加・変更</h2>
+      </div>
+      <p>新しいチームページは次の4ステップで追加します。詳細な手順はリポジトリの CONTENT-GUIDE.md を参照してください。</p>
+      <ol>
+        <li>teams/_template.html を複製して teams/チーム名ローマ字.html を作ります。</li>
+        <li>複製したファイルの &lt;title&gt; と page-hero のチーム名を書き換えます。</li>
+        <li>js/ops-config.js の teams 配列に1行追加します。</li>
+        <li>pushすれば、ナビ・この一覧・ハブトップに自動反映されます。</li>
+      </ol>
+    </section>
+    <!-- /CONTENT:add -->
+
+  </div>
+</main>
+
+<footer class="ops-footer">
+  <p><a href="../index.html">運営ハブへ戻る</a>｜PBC合宿2027 運営ハブ</p>
+</footer>
+
+</body>
+</html>
