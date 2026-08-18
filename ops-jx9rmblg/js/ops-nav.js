@@ -60,7 +60,7 @@
       a.appendChild(head);
 
       var meta = el("dl", "card__meta");
-      [["リーダー", t.leader], ["人数", t.members]].forEach(function (pair) {
+      [["リーダー", t.leader], ["メンバー", t.members]].forEach(function (pair) {
         var row = el("div");
         row.appendChild(el("dt", null, pair[0]));
         row.appendChild(el("dd", null, pair[1]));

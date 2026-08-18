@@ -48,7 +48,7 @@
 | `index.html`（参加者） | purpose / theme / overview / program / guide / access / first / faq / cancel / contact / updated | 参加者向け全セクション。faqにAPPENDあり。**updated=フッターの最終更新日（参加者ページを編集したら必ず当日日付に書き換える）** |
 | `ops-…/index.html` | pages | ページ一覧カード（他は自動生成） |
 | `ops-…/overview.html` | basic / venue-status / policy / results2026 / notation | 概要・会場ステータス・方針 |
-| `ops-…/venue.html` | kodo / kakurinbo / kuonji / access / visits | 会場3件＋下見記録（APPEND） |
+| `ops-…/venue.html` | kodo / kakurinbo / kuonji / access / visits | 大学講堂の交渉状況・覚林坊との連携・久遠寺側の通行動線＋下見記録（APPEND） |
 | `ops-…/schedule.html` | milestones / daybefore / dayof / ref2026 | 工程・前日・当日 |
 | `ops-…/rules.html` | seminar / info-handling | 運営ルール |
 | `ops-…/budget.html` | items / cost2026 / sheets | 制作物（APPEND）・収支 |
@@ -76,7 +76,7 @@
 - HTMLファイル名: 小文字英字ローマ字slug（例: `uketsuke.html`）
 - 画像: WebP形式（PIL: quality=85, method=6）、`assets/img/` 配下、内容がわかる名前
 - 日付表記: 本文は「2027年4月27日（火）」、属性・テーブルは `2027-04-27`
-- 人数表記: 2027は「約200名」、2026実績は「約350名規模」（公開LP文脈では「280名予定」基準。**内部数値は書かない**）
+- 人数表記: 2027は「200〜250名」、2026実績は「約350名規模」（公開LP文脈では「280名予定」基準。**内部数値は書かない**）
 
 ## 載せてよい情報／ダメな情報
 
