@@ -29,16 +29,19 @@ var OPS_CONFIG = {
      - status: "todo"（準備中）| "doing"（進行中）| "done"（完了） */
   teams: [
     { slug: "tokatsu",   name: "統括チーム",     leader: "白都", members: "奈津美さん", mission: "全体統括・意思決定の集約・各チーム連携", status: "doing" },
-    { slug: "kaijo",     name: "会場チーム",     leader: "掛布さん", members: "未定", mission: "会場交渉・現地実測・CAD・什器機材・設営撤収", status: "doing" },
-    { slug: "yudo",      name: "誘導チーム",     leader: "未定", members: "未定", mission: "最寄駅・エントランスからの案内誘導", status: "todo" },
-    { slug: "uketsuke",  name: "受付チーム",     leader: "未定", members: "未定", mission: "受付・クローク・席案内", status: "todo" },
-    { slug: "moshikomi", name: "申込管理チーム", leader: "未定", members: "未定", mission: "申込・入金管理・参加者名簿", status: "todo" },
-    { slug: "ts",        name: "TSチーム",       leader: "未定", members: "未定", mission: "TS対応・サポート", status: "todo" },
-    { slug: "bihin",     name: "備品チーム",     leader: "未定", members: "未定", mission: "備品・消耗品の準備と管理", status: "todo" }
+    { slug: "kaijo",     name: "会場チーム",     leader: "掛布さん（サブ: 梅原さん）", members: "7名（仮配属）", mission: "会場交渉・現地実測・CAD・什器機材・設営撤収・備品と後処理", status: "doing" },
+    { slug: "yudo",      name: "誘導チーム",     leader: "出口さん（サブ: 川又さん・福上さん）", members: "30名（仮配属）", mission: "駅・駐車場・ゴンドラから受付までの誘導と、帰りの退場誘導", status: "doing" },
+    { slug: "uketsuke",  name: "受付チーム",     leader: "米森さん", members: "22名（仮配属）", mission: "受付・クローク・受付ゲート後の席案内", status: "doing" },
+    { slug: "moshikomi", name: "申込管理チーム", leader: "奈津美さん", members: "3名（仮配属）", mission: "申込・入金管理・参加者名簿", status: "doing" },
+    { slug: "ts",        name: "TSチーム",       leader: "横山さん・大岡さん", members: "4名（仮配属）", mission: "TS対応・サポート", status: "doing" },
+    { slug: "shukuhaku", name: "宿泊・ケータリングチーム", leader: "上嶋さん", members: "3名（仮配属）", mission: "宿泊・前泊後泊・ケータリング・運営の昼食", status: "todo" }
   ],
 
   /* 更新履歴（新しいものを配列の先頭に追加。ハブトップに直近5件表示） */
   updates: [
+    { date: "2026-10-21", text: "10/20運営MTGの体制を反映。各チームのリーダー・サブリーダーと仮配属を掲載し、宿泊・ケータリングチームを新設、備品チームを会場チームへ統合" },
+    { date: "2026-10-21", text: "11月下旬の合宿キックオフ（オンライン）と、各チームの年内キックオフをスケジュールに追加" },
+    { date: "2026-10-21", text: "リンク集に運営チーム仮配属案（Google Sheets・リーダー陣が編集）を追加" },
     { date: "2026-09-18", text: "身延山大学から4月27日の会場使用承諾を受領。冒頭3〜5分の歓迎挨拶・紹介と、学長への依頼・仮承諾を確認" },
     { date: "2026-09-15", text: "新規参加者向けLP公開を参加者ページ・運営ハブへ反映し、申込導線と公開日程を同期" },
     { date: "2026-09-15", text: "前年リーダーが同じチームのサブリーダーとして参加する引き継ぎルールを決定" },
@@ -57,7 +60,10 @@ var OPS_CONFIG = {
   todos: [
     { page: "合宿概要",     text: "大学側から届く申込書類・会場使用手続きを完了し、正式見積・支払条件・利用可能時間・キャンセル規定を確定" },
     { page: "スケジュール", text: "大学側の歓迎挨拶を3〜5分で最終調整し、休憩・各セッション・撤収時刻と担当を含む当日タイムテーブルを確定" },
-    { page: "チーム",       text: "誘導・受付・申込管理・TS・備品の各チームリーダーを先行決定" },
+    { page: "チーム",       text: "仮配属をリーダー・サブリーダーで相談して確定（追加の運営メンバー21名の所属、会場チームの備品・後処理の担当を含む）" },
+    { page: "スケジュール", text: "11月下旬の合宿キックオフ（オンライン）の日程を決めて案内し、各リーダーに年内のチームキックオフを案内" },
+    { page: "会場",         text: "第二・第三駐車場の台数を確認して共有" },
+    { page: "宿泊・ケータリング", text: "宿泊・ケータリングの手配先（覚林坊経由／身延の観光協会経由）を決めて入口の段取りをつける" },
     { page: "会場",         text: "講堂E案・246名を基準に、机・通路・運営動線を最終調整して実収容人数を確定" },
     { page: "会場",         text: "机・椅子、ケータリング、前泊後泊、複数宿坊、送迎、駐車場、入退場動線を確定" },
     { page: "申込管理",     text: "フォーム完了画面・LINE導線・申込完了メール・請求書・二重送信時の挙動を実機確認" },
