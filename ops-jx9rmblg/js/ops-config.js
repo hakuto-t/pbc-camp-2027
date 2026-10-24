@@ -34,11 +34,12 @@ var OPS_CONFIG = {
     { slug: "uketsuke",  name: "受付チーム",     leader: "米森さん", members: "22名（仮配属）", mission: "受付・クローク・受付ゲート後の席案内", status: "doing" },
     { slug: "moshikomi", name: "申込管理チーム", leader: "奈津美さん", members: "3名（仮配属）", mission: "申込・入金管理・参加者名簿", status: "doing" },
     { slug: "ts",        name: "TSチーム",       leader: "横山さん・大岡さん", members: "4名（仮配属）", mission: "TS対応・サポート", status: "doing" },
-    { slug: "shukuhaku", name: "宿泊・ケータリングチーム", leader: "上嶋さん", members: "3名（仮配属）", mission: "宿泊・前泊後泊・ケータリング・運営の昼食", status: "todo" }
+    { slug: "shukuhaku", name: "宿泊・ケータリングチーム", leader: "上嶋さん", members: "3名（仮配属）", mission: "宿泊・前泊後泊・ケータリング・当日の昼食（参加者全員分を相談中）", status: "todo" }
   ],
 
   /* 更新履歴（新しいものを配列の先頭に追加。ハブトップに直近5件表示） */
   updates: [
+    { date: "2026-10-24", text: "当日の時刻を受付9:30・開始10:30・終了18:00（予定）へ変更。昼食は参加者全員分を覚林坊のケータリングで講堂へ届けてもらう方向で相談" },
     { date: "2026-10-21", text: "10/20運営MTGの体制を反映。各チームのリーダー・サブリーダーと仮配属を掲載し、宿泊・ケータリングチームを新設、備品チームを会場チームへ統合" },
     { date: "2026-10-21", text: "11月下旬の合宿キックオフ（オンライン）と、各チームの年内キックオフをスケジュールに追加" },
     { date: "2026-10-21", text: "リンク集に運営チーム仮配属案（Google Sheets・リーダー陣が編集）を追加" },
