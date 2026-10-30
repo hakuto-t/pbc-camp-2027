@@ -51,14 +51,58 @@
           <p class="stat-card__value">2027.4.27<small>火</small></p>
         </div>
         <div class="stat-card">
-          <p class="stat-card__label">運営チーム</p>
-          <p class="stat-card__value"><span id="teamCount">--</span><small>チーム</small></p>
+          <p class="stat-card__label">運営メンバー</p>
+          <p class="stat-card__value">87<small>名・<span id="teamCount">--</span>チーム</small></p>
         </div>
         <div class="stat-card">
-          <p class="stat-card__label">未確定事項</p>
-          <p class="stat-card__value"><span id="todoCount">--</span><small>件</small></p>
+          <p class="stat-card__label">今やること（未完了）</p>
+          <p class="stat-card__value"><span id="actionCount">--</span><small>件</small></p>
         </div>
       </div>
+      <ul class="jump-nav" aria-label="このページの見出し">
+        <li><a href="#decisions">決まったこと</a></li>
+        <li><a href="#upcoming">次の日程</a></li>
+        <li><a href="#actions">今やること</a></li>
+        <li><a href="#todos">未確定事項</a></li>
+        <li><a href="#teams">チーム</a></li>
+        <li><a href="#pages">ページ一覧</a></li>
+      </ul>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 決まったこと（ops-config.js の decisions から自動生成） -->
+    <!-- ============================================================ -->
+    <section class="section" id="decisions">
+      <div class="sec-head">
+        <p class="sec-head__en" aria-hidden="true">Decisions</p>
+        <h2 class="sec-head__title">決まったこと（10/30 第1回運営リーダー会議）</h2>
+      </div>
+      <p class="hub-lead">緑の線は決定、青の線は方向が決まって検討を続けているものです。これまでの決定は<a href="log.html">決定事項ログ</a>にあります。</p>
+      <ul class="decision-list" id="decisionList"><!-- ops-nav.js が生成 --></ul>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 次の日程（ops-config.js の upcoming から自動生成） -->
+    <!-- ============================================================ -->
+    <section class="section" id="upcoming">
+      <div class="sec-head">
+        <p class="sec-head__en" aria-hidden="true">Schedule</p>
+        <h2 class="sec-head__title">次の日程</h2>
+      </div>
+      <ol class="date-list" id="upcomingList"><!-- ops-nav.js が生成 --></ol>
+      <p class="caption" style="margin-top:12px;">当日の時間割と準備の工程は<a href="schedule.html">スケジュール</a>にまとめています。</p>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 今やること（ops-config.js の actions から自動生成） -->
+    <!-- ============================================================ -->
+    <section class="section" id="actions">
+      <div class="sec-head">
+        <p class="sec-head__en" aria-hidden="true">Action Items</p>
+        <h2 class="sec-head__title">今やること（チーム別）</h2>
+      </div>
+      <p class="hub-lead">10/30の会議で出た宿題です。チーム名を押すと、そのチームのページへ移ります。期限が決まっていないものは「未定」としています。</p>
+      <div class="action-board" id="actionBoard"><!-- ops-nav.js が生成 --></div>
     </section>
 
     <!-- ============================================================ -->
@@ -67,10 +111,21 @@
     <section class="section" id="todos">
       <div class="sec-head">
         <p class="sec-head__en" aria-hidden="true">Open Items</p>
-        <h2 class="sec-head__title">未確定事項</h2>
+        <h2 class="sec-head__title">未確定事項（<span id="todoCount">--</span>件）</h2>
       </div>
       <ul class="todo-list" id="todoList"><!-- ops-nav.js が生成 --></ul>
       <p class="caption" style="margin-top:12px;">確定したら <code>js/ops-config.js</code> の todos から削除し、該当ページの本文を更新する（手順は CONTENT-GUIDE.md）。</p>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- チーム一覧（ops-config.js の teams から自動生成） -->
+    <!-- ============================================================ -->
+    <section class="section" id="teams">
+      <div class="sec-head">
+        <p class="sec-head__en" aria-hidden="true">Teams</p>
+        <h2 class="sec-head__title">運営チーム（10/30確定）</h2>
+      </div>
+      <div class="card-grid" id="teamsGrid"><!-- ops-nav.js が生成 --></div>
     </section>
 
     <!-- ============================================================ -->
@@ -88,15 +143,15 @@
         </a>
         <a class="card" href="venue.html">
           <div class="card__head"><h3 class="card__title">会場</h3></div>
-          <p class="card__desc">大学講堂の交渉状況／覚林坊との連携／久遠寺側の通行動線と下見記録</p>
+          <p class="card__desc">講堂の席レイアウト図・下見動画7本・視察メモ・大学との調整状況・入退場の動線</p>
         </a>
         <a class="card" href="schedule.html">
           <div class="card__head"><h3 class="card__title">スケジュール</h3></div>
-          <p class="card__desc">準備の全体工程・前日設営・当日オペレーション</p>
+          <p class="card__desc">開催までの工程・前泊と前日設営・当日の時間割</p>
         </a>
         <a class="card" href="teams/index.html">
           <div class="card__head"><h3 class="card__title">チーム</h3></div>
-          <p class="card__desc">運営チーム一覧と各チームの計画・引き継ぎ・決定事項</p>
+          <p class="card__desc">各チームの役割分担・今やること・会場の情報・決定事項</p>
         </a>
         <a class="card" href="rules.html">
           <div class="card__head"><h3 class="card__title">運営ルール</h3></div>
@@ -112,7 +167,7 @@
         </a>
         <a class="card" href="links.html">
           <div class="card__head"><h3 class="card__title">リンク集</h3></div>
-          <p class="card__desc">Google Sheets・2026実績サイト・関連資料への入口</p>
+          <p class="card__desc">配属シート・下見動画のフォルダ・案内図・関連資料への入口</p>
         </a>
         <a class="card" href="tools/seating.html">
           <div class="card__head"><h3 class="card__title">席割ツール</h3><span class="badge badge--todo"><span class="badge__dot"></span>準備中</span></div>
@@ -121,17 +176,6 @@
       </div>
     </section>
     <!-- /CONTENT:pages -->
-
-    <!-- ============================================================ -->
-    <!-- チーム一覧（ops-config.js の teams から自動生成） -->
-    <!-- ============================================================ -->
-    <section class="section" id="teams">
-      <div class="sec-head">
-        <p class="sec-head__en" aria-hidden="true">Teams</p>
-        <h2 class="sec-head__title">運営チーム</h2>
-      </div>
-      <div class="card-grid" id="teamsGrid"><!-- ops-nav.js が生成 --></div>
-    </section>
 
     <!-- ============================================================ -->
     <!-- 更新履歴（ops-config.js の updates から自動生成・直近5件） -->

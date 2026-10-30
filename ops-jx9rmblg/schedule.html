@@ -39,13 +39,12 @@
 
     <!-- ============================================================ -->
     <!-- CONTENT:milestones | 全体マイルストーン -->
-    <!-- ============================================================ -->
     <section class="section" id="milestones">
       <div class="sec-head">
         <p class="sec-head__en" aria-hidden="true">Milestones</p>
-        <h2 class="sec-head__title">全体マイルストーン</h2>
+        <h2 class="sec-head__title">開催までの工程</h2>
       </div>
-      <div class="table-wrap">
+      <div class="table-wrap table-wrap--scroll">
         <table class="table">
           <thead>
             <tr>
@@ -61,15 +60,14 @@
               <td><span class="badge badge--done"><span class="badge__dot"></span>完了</span></td>
             </tr>
             <tr>
-              <td><span class="tbd">時期未定</span></td>
-              <!-- TODO(会場最終確定時期): 会場が最終確定したら時期を記入し、状態を更新する -->
-              <td>会場最終確定</td>
-              <td><span class="badge badge--todo"><span class="badge__dot"></span>未着手</span></td>
-            </tr>
-            <tr>
               <td class="num">2026-09-01</td>
               <td>LP公開・申込開始</td>
               <td><span class="badge badge--done"><span class="badge__dot"></span>公開済み</span></td>
+            </tr>
+            <tr>
+              <td class="num">2026-09-18</td>
+              <td>身延山大学から会場使用の承諾（申込書類・会場使用手続きはこれから）</td>
+              <td><span class="badge badge--done"><span class="badge__dot"></span>承諾済み</span></td>
             </tr>
             <tr>
               <td class="num">2026-10-20</td>
@@ -77,19 +75,38 @@
               <td><span class="badge badge--done"><span class="badge__dot"></span>完了</span></td>
             </tr>
             <tr>
-              <td class="num">2026-11 下旬</td>
-              <!-- TODO(キックオフ日程): 日程が決まったら日付を記入し、状態を更新する -->
-              <td>合宿キックオフ（オンライン。マネージャー・TS・運営など50〜70名、約2時間）</td>
-              <td><span class="tbd">日程調整中</span></td>
+              <td class="num">2026-10-30（金）</td>
+              <td>第1回 運営リーダー会議。7チーム87名の配属を確定</td>
+              <td><span class="badge badge--done"><span class="badge__dot"></span>完了</span></td>
             </tr>
             <tr>
-              <td class="num">2026 年内</td>
-              <td>各チームのキックオフ（チームのLINEグループを作る）</td>
+              <td class="num">2026-11-01頃</td>
+              <td>運営全員が入るLINEグループを作る（白都）</td>
+              <td><span class="badge badge--doing"><span class="badge__dot"></span>これから</span></td>
+            </tr>
+            <tr>
+              <td class="num">2026-11 中</td>
+              <td>各チームのLINEグループを作る（全体のグループの後に各リーダーが作る）</td>
               <td><span class="badge badge--todo"><span class="badge__dot"></span>未着手</span></td>
             </tr>
             <tr>
-              <td class="num">2027-02-28</td>
-              <td>キャンセル無料期限（この日まで無料）</td>
+              <td class="num">2026-12-04（金）</td>
+              <td>運営全体キックオフ。19:00から、オンライン・約2時間。秀明さんのお話も予定。チームの本格的な活動はこの日以降</td>
+              <td><span class="badge badge--done"><span class="badge__dot"></span>日程確定</span></td>
+            </tr>
+            <tr>
+              <td class="num">2026 年内</td>
+              <td>各チームのキックオフ（チームごとに役割と準備の進め方を共有）</td>
+              <td><span class="badge badge--todo"><span class="badge__dot"></span>未着手</span></td>
+            </tr>
+            <tr>
+              <td class="num">2027-01〜02</td>
+              <td>各チームの準備</td>
+              <td><span class="badge badge--todo"><span class="badge__dot"></span>予定</span></td>
+            </tr>
+            <tr>
+              <td class="num">2027-02-28（日）</td>
+              <td>申込締切・キャンセル無料期限（この日まで無料）。ここで参加人数が決まる</td>
               <td><span class="badge badge--warn"><span class="badge__dot"></span>期日</span></td>
             </tr>
             <tr>
@@ -98,10 +115,21 @@
               <td><span class="badge badge--danger"><span class="badge__dot"></span>期日</span></td>
             </tr>
             <tr>
+              <td class="num">2027-03 中旬</td>
+              <!-- TODO(直前ミーティング): 日程を決めて記入する -->
+              <td>直前ミーティング（運営全員・オンライン。2026年は3月9日に2時間ほどZoomで実施）</td>
+              <td><span class="tbd">日程未定</span></td>
+            </tr>
+            <tr>
+              <td class="num">2027-04（直前）</td>
+              <!-- TODO(リーダーミーティング): 日程を決めて記入する -->
+              <td>リーダーミーティング</td>
+              <td><span class="tbd">日程未定</span></td>
+            </tr>
+            <tr>
               <td class="num">2027-04-26（月）</td>
-              <td>前日設営（実施の要否を含めて検討中）</td>
-              <!-- TODO(前日設営): 実施の要否・内容を決めて状態を更新する -->
-              <td><span class="tbd">未定</span></td>
+              <td>運営メンバー全員が前泊し、前日設営（午後1時頃から60〜70名ほどの予定）</td>
+              <td><span class="badge badge--done"><span class="badge__dot"></span>方針確定</span></td>
             </tr>
             <tr>
               <td class="num">2027-04-27（火）</td>
@@ -117,67 +145,89 @@
 
     <!-- ============================================================ -->
     <!-- CONTENT:daybefore | 前日設営 -->
-    <!-- ============================================================ -->
     <section class="section" id="daybefore">
       <div class="sec-head">
         <p class="sec-head__en" aria-hidden="true">Day Before</p>
-        <h2 class="sec-head__title">前日設営</h2>
+        <h2 class="sec-head__title">前泊と前日設営（2027-04-26・月）</h2>
       </div>
-      <p>前日設営（2027-04-26・月）の要否と搬入計画は<span class="tbd">未定</span>です。会場が最終確定した後に、搬入経路・設営内容・必要人数・集合時間を含めて計画します。</p>
-      <!-- TODO(前日設営計画): 要否を判断し、搬入計画・必要人数・集合時間をこのセクションへ記載する -->
-      <div class="info-box">会場確定までは、前日分の人員手配や車両手配を確定しないでください。各チームの前日予定は仮置きのまま保留とします。</div>
+      <div class="table-wrap">
+        <table class="table role-table">
+          <tbody>
+            <tr><th>前泊</th><td>運営メンバーは全員前泊（必須）。後泊は任意（帰れる人は帰ってよい）。前泊の宿は宿泊・ケータリングチーム（上嶋さん）が確定する</td></tr>
+            <tr><th>前日設営</th><td>午後1時頃に集まり、60〜70名ほどで設営する予定。大岡さんにセットアップをお願いし、前年のように秀明さんからTSのドリルをしてもらう案もある</td></tr>
+            <tr><th>集合時刻</th><td><span class="tbd">未定</span> 前日から講堂に入れるかを掛布さんが丸茂さんに確認中。返事を受けて白都が決める</td></tr>
+            <tr><th>駐車場</th><td>前日入りの運営は、当日の参加者とは別の駐車場に停める案（誘導チーム）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- TODO(前日設営計画): 入館できる時刻が分かったら、集合時刻・設営の分担・搬入計画を記載する -->
     </section>
     <!-- /CONTENT:daybefore -->
 
     <!-- ============================================================ -->
     <!-- CONTENT:dayof | 当日オペレーション -->
-    <!-- ============================================================ -->
     <section class="section" id="dayof">
       <div class="sec-head">
         <p class="sec-head__en" aria-hidden="true">Day Of</p>
-        <h2 class="sec-head__title">当日オペレーション</h2>
+        <h2 class="sec-head__title">当日の時間割（2027-04-27・火）</h2>
       </div>
-      <p>2026年10月24日、受付を1時間取り、昼食の時間を取っても本編の時間を確保するため、9:30開場・受付、10:30開始、18:00終了予定に変更しました（変更前は10:30受付・11:00開始）。受付の1時間は、既存プログラム生と新規参加者の受付時間を分ける余裕にも使えます。公開LPは修正を依頼します。会の冒頭に身延山大学からの歓迎の挨拶と簡単な紹介を3〜5分設けます。大学側では学長へ依頼し、現時点で承諾をいただいています。登壇者の最終確定と正確な時間帯は、当日のカリキュラムと時間割を大学側へ共有する際に調整します。</p>
+      <p>受付9:30・開会10:30・終了18:00（予定）です（2026年10月24日に変更。変更前は受付10:30・開始11:00）。参加者向けHPと申込フォームは修正済みで、拡大グループへも通達済みです。詳しい時間割は、大学から時間割の承認を得てから確定します。</p>
       <!-- TODO(当日タイムテーブル): 休憩・各セッション・撤収時刻と担当・持ち場を確定し、詳細タイムテーブルへ差し替える -->
       <ul class="timeline">
+        <li class="tl-item">
+          <p class="tl-item__time">8:00まで</p>
+          <span class="tl-item__node" aria-hidden="true"></span>
+          <div class="tl-item__body">
+            <h4>誘導チームが配置につく <span class="badge badge--doing"><span class="badge__dot"></span>目安</span></h4>
+            <p>9:30の受付に間に合うよう、遅くとも8時には配置につく（誘導チームの見立て）。運営全体の集合時刻は未定で、当日朝に何時から講堂へ入れるかを大学に確かめてから決めます。</p>
+          </div>
+        </li>
         <li class="tl-item">
           <p class="tl-item__time">9:30</p>
           <span class="tl-item__node" aria-hidden="true"></span>
           <div class="tl-item__body">
-            <h4>開場・受付・誘導開始 <span class="badge badge--doing"><span class="badge__dot"></span>LP修正依頼</span></h4>
-            <p>駐車場から大本堂側を通る参加者導線を候補に、受付場所・段階集合の要否・クローク運用を設計します。</p>
+            <h4>開場・受付 <span class="badge badge--done"><span class="badge__dot"></span>決定</span></h4>
+            <p>既存生と新規を分けず、9:30から同時に受付します（新規は複数レーン、既存生は1レーン）。手前のホールに仮受付を置き、講堂前の本受付と2段にする案もあり、誘導チームと連携して決めます。靴は、下駄箱で渡す袋に入れて持って行ってもらう流れです。</p>
           </div>
         </li>
         <li class="tl-item">
           <p class="tl-item__time">10:30</p>
           <span class="tl-item__node" aria-hidden="true"></span>
           <div class="tl-item__body">
-            <h4>開会・身延山大学からの歓迎挨拶 <span class="badge badge--done"><span class="badge__dot"></span>方針確定</span></h4>
-            <p>身延山・身延山大学について簡単に紹介いただきます。持ち時間は3〜5分とし、登壇者と正確な時間帯は大学側と最終調整します。</p>
+            <h4>開会・身延山大学からの歓迎のご挨拶 <span class="badge badge--doing"><span class="badge__dot"></span>承認待ち</span></h4>
+            <p>学長のご挨拶は冒頭に入れる方向で、掛布さんが丸茂さんに承認を取ります。時間の長さは、大学側と最終調整する予定です。</p>
           </div>
         </li>
         <li class="tl-item">
-          <p class="tl-item__time">挨拶後</p>
+          <p class="tl-item__time">挨拶後〜12:30頃</p>
           <span class="tl-item__node" aria-hidden="true"></span>
           <div class="tl-item__body">
-            <h4>PBC本編開始 <span class="badge badge--doing"><span class="badge__dot"></span>詳細調整中</span></h4>
-            <p>昼食の時間を除いて、90分ごとに10〜20分の休憩を入れる想定です。</p>
+            <h4>PBC本編（前半） <span class="badge badge--doing"><span class="badge__dot"></span>詳細調整中</span></h4>
+            <p>最初は昼食まで続けて進めます。</p>
           </div>
         </li>
         <li class="tl-item">
-          <p class="tl-item__time">12:30〜13:00頃開始</p>
+          <p class="tl-item__time">12:30か13:00頃から</p>
           <span class="tl-item__node" aria-hidden="true"></span>
           <div class="tl-item__body">
             <h4>昼食 <span class="badge badge--doing"><span class="badge__dot"></span>1時間（仮）</span></h4>
-            <p>参加者全員分の昼食を、覚林坊さんのケータリングで講堂へ届けてもらう方向で相談します。飲料・ゴミ処理の扱いは会場側と確認し、食事の内容や提供の有無は参加者ページへ載せる前に確定させます。</p>
+            <p>参加者全員分を覚林坊がケータリングで引き受けています。配膳の範囲は上嶋さんが確認中、講堂で食べてよいかは丸茂さんに確認中です。</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <p class="tl-item__time">昼食後〜18:00</p>
+          <span class="tl-item__node" aria-hidden="true"></span>
+          <div class="tl-item__body">
+            <h4>PBC本編（後半） <span class="badge badge--doing"><span class="badge__dot"></span>詳細調整中</span></h4>
+            <p>90分ごとに10〜20分の休憩を入れる想定です。</p>
           </div>
         </li>
         <li class="tl-item">
           <p class="tl-item__time">18:00</p>
           <span class="tl-item__node" aria-hidden="true"></span>
           <div class="tl-item__body">
-            <h4>終了 <span class="badge badge--doing"><span class="badge__dot"></span>予定</span></h4>
-            <p>終了後の撤収時刻と、撤収の分担・搬出計画は、前日設営の要否とあわせて決めます。</p>
+            <h4>終了・退場誘導・撤去 <span class="badge badge--doing"><span class="badge__dot"></span>予定</span></h4>
+            <p>帰りは講堂からエレベーターと階段で大学の1階へ降り、大学側の出口から出ます。退場の誘導は1時間ほどの見込み。撤去を終える期限（夜7時か8時か）は大学に確認中です。</p>
           </div>
         </li>
       </ul>

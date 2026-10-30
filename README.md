@@ -41,6 +41,7 @@ ops-jx9rmblg/         運営ハブ（CSS/JSもすべてこの配下に閉じる�
   teams/              チーム一覧・各チームページ・_template.html（複製用雛形）
   tools/seating.html  席割ツール置き場（準備中）
   css/ops.css         運営専用スタイル
+  img/                運営専用の画像（席レイアウト図・下見動画の静止画。WebP）
   js/ops-config.js    ★設定集中点（ナビ・チーム・TODO・更新履歴）
   js/ops-nav.js       共通生成スクリプト（原則編集しない）
 _work/                ローカル作業場（Git管理外。内部資料はここへ）

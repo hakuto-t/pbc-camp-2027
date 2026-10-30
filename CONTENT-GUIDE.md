@@ -29,6 +29,9 @@
 | `teams` | チーム定義（slug/name/leader/members/mission/status） | ナビ・チーム一覧・ハブトップ |
 | `updates` | 更新履歴（新しい順・先頭に追加） | ハブトップ（直近5件） |
 | `todos` | 未確定事項 | ハブトップの未確定一覧・件数 |
+| `decisions` | 決まったこと（`level`: `done`=決定／`doing`=方向・検討中。新しいものを先頭に） | ハブトップ「決まったこと」 |
+| `upcoming` | 次の日程（`state`: `done`／`next`／`plan`） | ハブトップ「次の日程」 |
+| `actions` | 今やること（`team` はチームのslug、`all` は全チームのリーダー向け。`status`: `todo`／`doing`／`done`） | ハブトップ「今やること」（チーム別）と、各チームページの「今やること」 |
 
 `status` は `"todo"`（準備中）/`"doing"`（進行中）/`"done"`（完了）。
 
@@ -46,15 +49,15 @@
 | ファイル | CONTENT ID | 内容 |
 |---|---|---|
 | `index.html`（参加者） | purpose / theme / overview / program / guide / access / first / faq / cancel / contact / updated | 参加者向け全セクション。faqにAPPENDあり。**updated=フッターの最終更新日（参加者ページを編集したら必ず当日日付に書き換える）** |
-| `ops-…/index.html` | pages | ページ一覧カード（他は自動生成） |
+| `ops-…/index.html` | pages | ページ一覧カード（決まったこと・次の日程・今やること・未確定事項・チーム・更新履歴は ops-config.js から自動生成） |
 | `ops-…/overview.html` | basic / venue-status / policy / results2026 / notation | 概要・会場ステータス・方針 |
-| `ops-…/venue.html` | kodo / kakurinbo / kuonji / access / visits | 大学講堂の交渉状況・覚林坊との連携・久遠寺側の通行動線＋下見記録（APPEND） |
+| `ops-…/venue.html` | kodo / layout / videos / inspection / kakurinbo / kuonji / access / visits | 大学講堂の状況・席レイアウト図・下見動画・視察メモ・覚林坊・入場と退場の動線・アクセス＋下見記録（APPEND）。図や静止画は `ops-jx9rmblg/img/` に置く |
 | `ops-…/schedule.html` | milestones / daybefore / dayof / ref2026 | 工程・前日・当日 |
 | `ops-…/rules.html` | seminar / info-handling | 運営ルール |
 | `ops-…/budget.html` | items / cost2026 / sheets | 制作物（APPEND）・収支 |
 | `ops-…/log.html` | howto / log | 決定事項ログ（APPEND） |
 | `ops-…/links.html` | links | リンク集カード |
-| `ops-…/teams/<slug>.html` | basic / mission / tasks / timeline / items / handover / log / links | チーム個別（logにAPPEND） |
+| `ops-…/teams/<slug>.html` | now / basic / site / mission / tasks / timeline / items / handover / log / links | チーム個別。now は ops-config.js の actions から自動生成（HTMLは触らない）。site は視察メモ・下見動画。logにAPPEND |
 
 ## 決定事項ログの行フォーマット
 
@@ -74,7 +77,7 @@
 ## 命名規則
 
 - HTMLファイル名: 小文字英字ローマ字slug（例: `uketsuke.html`）
-- 画像: WebP形式（PIL: quality=85, method=6）、`assets/img/` 配下、内容がわかる名前
+- 画像: WebP形式（PIL: quality=85, method=6）、内容がわかる名前。参加者ページ用は `assets/img/`、運営ハブ用は `ops-jx9rmblg/img/`（運営専用ファイルを `assets/` に置かないため）
 - 日付表記: 本文は「2027年4月27日（火）」、属性・テーブルは `2027-04-27`
 - 人数表記: 2027は「246名（予定）」とし、「会場レイアウトの最終調整により多少変動する可能性がある」と添える。2026実績は「約350名規模」（公開LP文脈では「280名予定」基準。**内部数値は書かない**）
 
