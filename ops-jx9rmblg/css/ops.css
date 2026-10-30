@@ -729,3 +729,125 @@
   .decision, .action-group, .video-card { box-shadow: none; break-inside: avoid; }
   .jump-nav { display: none; }
 }
+
+/* --------------------------------------------------------------------------
+   12. 2026-10-30 見た目の直し（独立レビューの指摘）
+   -------------------------------------------------------------------------- */
+/* ページ内リンクで飛んだとき、固定ヘッダー（上段＋メニュー）に見出しが隠れないようにする */
+html { scroll-padding-top: 130px; }
+
+/* 注意・情報の枠は表と同じ幅にそろえる */
+.page-ops .info-box,
+.page-ops .warn-box { max-width: none; }
+
+/* 決まったこと: タイトルを主に見せ、本文は押すと開く */
+.decision__details { display: flex; flex-direction: column; }
+.decision__details > summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  cursor: pointer;
+  list-style: none;
+}
+.decision__details > summary::-webkit-details-marker { display: none; }
+.page-ops .decision__title {
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--kon);
+}
+.decision__details > summary::after {
+  content: "詳しく見る ▾";
+  font-size: .8125rem;
+  font-weight: 700;
+  color: var(--ops-muted);
+}
+.decision__details[open] > summary::after { content: "閉じる ▴"; }
+.decision__body { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.decision__date { margin-top: 0; }
+
+/* 今やること: チーム名のリンクと、宿題がないときの表示 */
+.action-group__title a { text-decoration: underline; text-underline-offset: 3px; }
+.page-ops .action--empty { padding: 12px 0; font-size: .9375rem; color: var(--ops-muted); }
+.page-ops .action-board__sub {
+  max-width: 56rem;
+  margin: 20px 0 8px;
+  font-size: 1rem;
+  color: var(--ops-muted);
+}
+.page-ops .action-board__sub:first-child { margin-top: 0; }
+
+/* 下見動画: 静止画は押すボタン。再生中のカードは横いっぱいに広げ、16:9で再生画面を出す */
+button.video-card__thumb {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+button.video-card__thumb:focus-visible { outline: 3px solid var(--kon); outline-offset: -3px; }
+button.video-card__thumb:hover .video-card__play { background: var(--kon); }
+.video-card.is-playing { grid-column: 1 / -1; }
+.video-card__player { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; }
+.video-card__player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-card__open {
+  align-self: flex-start;
+  margin-top: 2px;
+  font-size: .875rem;
+  font-weight: 700;
+  color: var(--kon);
+}
+
+/* 席レイアウト図: 押すと拡大できる印 */
+.figure__zoom { position: relative; display: block; }
+.figure__zoom-mark {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 4px 10px;
+  font-size: .8125rem;
+  font-weight: 700;
+  color: var(--on-kon);
+  background: rgba(20, 32, 58, .82);
+  border-radius: var(--radius);
+  pointer-events: none;
+}
+.figure__zoom-mark::before { content: "⤢ "; }
+
+@media (max-width: 700px) {
+  /* ハブトップの数字カードは2列×2段 */
+  .stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .stat-card { padding: 14px 16px; }
+  .stat-card__label { font-size: .8125rem; }
+  .stat-card__value { font-size: 1.5rem; }
+
+  /* 工程表はスマホでは縦並びのカードにする（状態の列を見えるように） */
+  .table--stack thead { display: none; }
+  .table--stack,
+  .table--stack tbody { display: block; width: 100%; }
+  .table--stack tr {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 12px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    background: var(--ops-surface);
+    border: 1px solid var(--ops-line);
+    border-radius: var(--radius);
+  }
+  .page-ops .table--stack td { display: block; padding: 0; border: 0; }
+  .page-ops .table--stack td[data-label="時期"] { font-weight: 700; color: var(--kon); }
+  .page-ops .table--stack td[data-label="状態"] { grid-column: 2; grid-row: 1; justify-self: end; }
+  .page-ops .table--stack td[data-label="項目"] { grid-column: 1 / -1; }
+  .table--stack .ms-row--done { opacity: .7; }
+
+  /* 再生画面: 元の動画が縦長なので、スマホでは縦長の枠で大きく見せる */
+  .video-card__player { aspect-ratio: 9 / 16; max-height: 80vh; }
+}
+@media print {
+  .figure__zoom-mark { display: none; }
+  .table--stack thead { display: table-header-group; }
+}
