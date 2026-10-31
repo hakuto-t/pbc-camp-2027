@@ -30,21 +30,49 @@
     return e;
   }
 
-  /* 1) グローバルナビ（現在地判定: teams/配下→チーム、tools/配下→なし、それ以外はファイル名一致） */
+  var leader = document.body.dataset.audience === "leaders";
+  var file = location.pathname.split("/").pop() || "index.html";
+  var forward = ["actions", "decisions", "todos", "upcoming", "pages", "updates", "teams"];
+  if (depth === 0 && file === "index.html" && forward.indexOf(location.hash.slice(1)) !== -1) {
+    location.replace((location.hash === "#teams" ? "teams/index.html" : "leaders.html") + location.hash);
+    return;
+  }
+  function revealHash() {
+    var id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch (_) { return; }
+    var target = document.getElementById(id);
+    if (!target) return;
+    for (var node = target; node; node = node.parentElement) {
+      if (node.tagName === "DETAILS") node.open = true;
+    }
+    target.scrollIntoView();
+  }
+  window.addEventListener("hashchange", revealHash);
+  if (location.hash) requestAnimationFrame(revealHash);
+  var notice = document.getElementById("notice");
+  if (notice) notice.textContent = OPS_CONFIG.notice;
   var navBox = document.querySelector(".ops-nav");
   if (navBox) {
-    var file = location.pathname.split("/").pop() || "index.html";
-    var inTeams = location.pathname.indexOf("/teams/") !== -1;
-    var inTools = location.pathname.indexOf("/tools/") !== -1;
-    OPS_CONFIG.nav.forEach(function (item) {
-      var a = el("a", null, item.label);
+    var toggle = el("button", "menu-toggle", "メニュー");
+    toggle.type = "button"; toggle.setAttribute("aria-expanded", "false"); toggle.setAttribute("aria-controls", "nav-sheet");
+    var overlay = el("div", "nav-overlay"); overlay.hidden = true;
+    var sheet = el("div", "nav-sheet"); sheet.id = "nav-sheet";
+    var close = el("button", "nav-close", "閉じる"); close.type = "button";
+    var list = el("div", "nav-links");
+    OPS_CONFIG.nav.forEach(function(item) {
+      var a = el("a", item.minor ? "nav-minor" : "", item.label);
       a.href = prefix + item.href;
-      var isCurrent = inTeams ? item.href.indexOf("teams/") === 0
-                    : inTools ? false
-                    : item.href === file;
-      if (isCurrent) { a.classList.add("is-current"); }
-      navBox.appendChild(a);
+      var current = depth === 1 && location.pathname.indexOf("/teams/") !== -1 ? item.href === "teams/index.html" : depth === 0 && item.href === file;
+      if (current) { a.classList.add("is-current"); a.setAttribute("aria-current", "page"); }
+      list.appendChild(a);
     });
+    function closeMenu() { overlay.hidden = true; toggle.setAttribute("aria-expanded", "false"); toggle.focus(); }
+    function openMenu() { overlay.hidden = false; toggle.setAttribute("aria-expanded", "true"); list.querySelector("a").focus(); }
+    toggle.addEventListener("click", openMenu); close.addEventListener("click", closeMenu);
+    overlay.addEventListener("click", function(e) { if (!overlay.hidden && window.matchMedia("(max-width: 767px)").matches && (e.target === overlay || e.target === sheet)) closeMenu(); });
+    document.addEventListener("keydown", function(e) { if (e.key === "Escape" && !overlay.hidden) closeMenu(); });
+    sheet.appendChild(close); sheet.appendChild(list); overlay.appendChild(sheet);
+    navBox.appendChild(toggle); navBox.appendChild(overlay);
   }
 
   /* 2) チーム一覧カード */
@@ -89,7 +117,7 @@
   /* 4) 更新履歴（直近5件） */
   var ul = document.getElementById("updatesList");
   if (ul) {
-    OPS_CONFIG.updates.slice(0, 5).forEach(function (u) {
+    (leader ? OPS_CONFIG.updates : OPS_CONFIG.updates.slice(0, 3)).forEach(function (u) {
       var li = el("li");
       var t = el("time", null, u.date);
       t.setAttribute("datetime", u.date);
@@ -157,19 +185,12 @@
     var dItems = dlimit > 0 ? OPS_CONFIG.decisions.slice(0, dlimit) : OPS_CONFIG.decisions;
     dItems.forEach(function (d) {
       var li = el("li", "decision decision--" + d.level);
-      var det = el("details", "decision__details");
-      var sum = el("summary", "decision__head");
-      sum.appendChild(badge(d.level === "done" ? "done" : "doing", LEVEL_LABEL[d.level] || "決定"));
-      sum.appendChild(el("span", "decision__title", d.title));
-      det.appendChild(sum);
-      var bodyBox = el("div", "decision__body");
-      bodyBox.appendChild(el("p", "decision__text", d.text));
-      var t = el("time", "decision__date", shortDate(d.date) + " 決定");
-      if (d.level !== "done") { t.textContent = shortDate(d.date) + " 時点"; }
-      t.setAttribute("datetime", d.date);
-      bodyBox.appendChild(t);
-      det.appendChild(bodyBox);
-      li.appendChild(det);
+      var title = el("h3", "decision__title", d.title);
+      title.prepend(badge(d.level === "done" ? "done" : "doing", LEVEL_LABEL[d.level] || "決定"));
+      li.appendChild(title);
+      li.appendChild(el("p", "decision__text", d.text));
+      var t = el("time", "decision__date", shortDate(d.date) + (d.level === "done" ? " 決定" : " 時点"));
+      t.setAttribute("datetime", d.date); li.appendChild(t);
       dl.appendChild(li);
     });
   }
@@ -182,7 +203,7 @@
   if (ul2 && OPS_CONFIG.upcoming) {
     /* data-limit があれば「済み」を除いた先頭からその件数だけ出す（ハブトップ） */
     var ulimit = parseInt(ul2.getAttribute("data-limit") || "0", 10);
-    var uItems = OPS_CONFIG.upcoming;
+    var uItems = OPS_CONFIG.upcoming.filter(function (u) { return u.state !== "done"; });
     if (ulimit > 0) {
       uItems = uItems.filter(function (u) { return u.state !== "done"; }).slice(0, ulimit);
     }
@@ -206,7 +227,7 @@
     var li = el("li", "action action--" + a.status);
     var top = el("div", "action__top");
     top.appendChild(badge(a.status === "done" ? "done" : a.status === "doing" ? "doing" : "todo", ACTION_LABEL[a.status] || "未着手"));
-    if (a.due) { top.appendChild(el("span", "action__due", "期限: " + a.due)); }
+    if (a.due && (leader || a.due !== "未定")) { top.appendChild(el("span", "action__due", "期限: " + a.due)); }
     li.appendChild(top);
     li.appendChild(el("p", "action__what", a.what));
     var who = "担当: " + a.who;
@@ -237,8 +258,13 @@
     } else {
       /* ハブトップ: 全チーム共通→各チームの順。宿題がないチームも出す */
       var order = ["all"].concat(OPS_CONFIG.teams.map(function (t) { return t.slug; }));
+      var emptyTeams = [];
       order.forEach(function (slug) {
         var items = OPS_CONFIG.actions.filter(function (a) { return a.team === slug; });
+        if (!items.some(function(a) { return a.status !== "done"; })) {
+          emptyTeams.push(teamName(slug));
+          return;
+        }
         var box = el("section", "action-group");
         var head = el("div", "action-group__head");
         if (slug === "all") {
@@ -261,6 +287,7 @@
         box.appendChild(list2);
         ab.appendChild(box);
       });
+      if (emptyTeams.length) ab.appendChild(el("p", "action-group__empty", "今やることなし：" + emptyTeams.join("・")));
     }
   }
 

@@ -1,199 +1,78 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<meta name="referrer" content="no-referrer">
-<title>運営ハブ｜PBC合宿2027 in 身延山</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='6'%20fill='%231C2B4A'/%3E%3Crect%20x='18'%20y='30'%20width='28'%20height='3'%20fill='%23C9A45C'/%3E%3Crect%20x='29'%20y='14'%20width='6'%20height='13'%20fill='%23C9502F'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/site.css">
-<link rel="stylesheet" href="css/ops.css">
-<script src="js/ops-config.js"></script>
-<script src="js/ops-nav.js" defer></script>
-</head>
-<body class="page-ops" data-depth="0">
-
-<header class="ops-header">
-  <div class="ops-header__row">
-    <a class="ops-header__brand" href="index.html">PBC合宿2027 in 身延山<span class="tag">運営</span></a>
-    <a class="ops-header__guest" href="../index.html">参加者ページを開く →</a>
-  </div>
-  <nav class="ops-nav" aria-label="運営メニュー"><!-- ops-nav.js が生成 --></nav>
-  <noscript><p style="padding:8px 24px;margin:0;font-size:12px;">JavaScriptが無効のためメニューを表示できません。<a href="index.html">ハブトップ</a>から各ページへ移動してください。</p></noscript>
-</header>
-
-<div class="page-hero">
-  <div class="container container--wide">
-    <p class="page-hero__en" aria-hidden="true">Operations Hub</p>
-    <h1 class="page-hero__title">運営ハブ</h1>
-    <p class="page-hero__crumb">このサイトのURLは運営メンバー限定です。参加者・外部への共有は行わないでください。</p>
-  </div>
-</div>
-
-<main>
-  <div class="container container--wide">
-
-    <!-- ============================================================ -->
-    <!-- サマリー -->
-    <!-- ============================================================ -->
-    <section class="section" aria-label="サマリー">
-      <div class="stat-grid">
-        <div class="stat-card">
-          <p class="stat-card__label">開催まで</p>
-          <p class="stat-card__value"><span id="countdown">--</span><small>日</small></p>
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="noindex, nofollow" name="robots"/>
+    <meta content="no-referrer" name="referrer"/>
+    <title>運営ハブ｜PBC合宿2027 in 身延山</title>
+    <link href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='6'%20fill='%231C2B4A'/%3E%3Crect%20x='18'%20y='30'%20width='28'%20height='3'%20fill='%23FFFFFF'/%3E%3Crect%20x='29'%20y='14'%20width='6'%20height='13'%20fill='%23FFFFFF'/%3E%3C/svg%3E" rel="icon"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+    <link href="css/ops.css" rel="stylesheet"/>
+    <script src="js/ops-config.js"></script>
+    <script defer="" src="js/ops-nav.js"></script>
+  </head>
+  <body class="page-ops" data-depth="0">
+    <header class="ops-header">
+      <a class="ops-header__brand" href="index.html">PBC合宿2027 in 身延山 <span>運営</span></a>
+      <nav aria-label="運営メニュー" class="ops-nav"></nav>
+      <noscript>
+        <nav aria-label="運営メニュー">
+          <a href="index.html">トップ</a>
+          <a href="teams/index.html">チーム</a>
+          <a href="schedule.html">当日の流れ</a>
+          <a href="venue.html">会場</a>
+          <a href="faq.html">よくある質問</a>
+          <a href="leaders.html">リーダー向け</a>
+        </nav>
+      </noscript>
+    </header>
+    <main>
+      <div class="notice" id="notice"></div>
+      <div class="container home">
+        <h1>運営ハブ</h1>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <span>開催日</span>
+            <strong>2027年4月27日（火）</strong>
+            <small>あと <span id="countdown">--</span> 日</small>
+          </div>
+          <div class="stat-card">
+            <span>会場</span>
+            <strong>身延山大学 本館5F講堂</strong>
+          </div>
+          <div class="stat-card">
+            <span>時刻</span>
+            <strong>受付9:30・開会10:30</strong>
+          </div>
         </div>
-        <div class="stat-card">
-          <p class="stat-card__label">開催日</p>
-          <p class="stat-card__value">2027.4.27<small>火</small></p>
-        </div>
-        <div class="stat-card">
-          <p class="stat-card__label">運営メンバー</p>
-          <p class="stat-card__value">87<small>名・<span id="teamCount">--</span>チーム</small></p>
-        </div>
-        <div class="stat-card">
-          <p class="stat-card__label">今やること（未完了）</p>
-          <p class="stat-card__value"><span id="actionCount">--</span><small>件</small></p>
-        </div>
+        <section class="home-section">
+          <h2>知りたいことを選ぶ</h2>
+          <div class="entry-grid">
+            <a class="entry-card" href="teams/index.html"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="8" r="3"></circle><path d="M4 20c0-4 3-6 8-6s8 2 8 6"></path></svg><span>自分のチーム</span></a>
+            <a class="entry-card" href="rules.html#tablestaff"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><path d="M4 4h16v16H4zM8 9h8M8 13h8"></path></svg><span>テーブルスタッフの心得</span></a>
+            <a class="entry-card" href="schedule.html"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 6v6l4 3"></path></svg><span>当日の流れ</span></a>
+            <a class="entry-card" href="venue.html"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><path d="M12 21s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12z"></path><circle cx="12" cy="9" r="2"></circle></svg><span>会場と行き方</span></a>
+            <a class="entry-card" href="faq.html"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M9 9a3 3 0 1 1 4 3c-1 .5-1 1-1 2M12 17h.01"></path></svg><span>よくある質問</span></a>
+            <a class="entry-card" href="leaders.html"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><path d="M4 20V5h16v15M8 9h8M8 13h8M8 17h8"></path></svg><span>リーダーの方へ</span></a>
+          </div>
+        </section>
+        <section class="home-section">
+          <h2>更新のお知らせ</h2>
+          <ul class="update-list" id="updatesList"></ul>
+          <a href="leaders.html#updates">もっと見る</a>
+        </section>
       </div>
-      <ul class="jump-nav" aria-label="このページの見出し">
-        <li><a href="#upcoming">次の日程</a></li>
-        <li><a href="#actions">今やること</a></li>
-        <li><a href="#decisions">決まったこと</a></li>
-        <li><a href="#todos">未確定事項</a></li>
-        <li><a href="#teams">チーム</a></li>
-        <li><a href="#pages">ページ一覧</a></li>
-      </ul>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- 次の日程（ops-config.js の upcoming から自動生成） -->
-    <!-- ============================================================ -->
-    <section class="section" id="upcoming">
-      <div class="sec-head">
-        <p class="sec-head__en" aria-hidden="true">Schedule</p>
-        <h2 class="sec-head__title">次の日程（直近3件）</h2>
+    </main>
+    <footer class="ops-footer">
+      <div class="container">
+        <p>運営URLは運営メンバー限定です。参加者・SNS・外部チャットには出さないでください。</p>
+        <p>短縮URLサービスやQRコード生成サービスにこのURLを入力しないでください（外部サービスにURLが記録されるため）。</p>
+        <p><a href="overview.html">合宿概要</a></p>
+        <p><a href="../index.html">参加者ページを開く →</a></p>
       </div>
-      <ol class="date-list" id="upcomingList" data-limit="3"><!-- ops-nav.js が生成（済みを除く直近3件） --></ol>
-      <p class="caption" style="margin-top:12px;">直近の3件です。開催までのすべての予定と当日の時間割は<a href="schedule.html">スケジュール</a>にあります。</p>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- 今やること（ops-config.js の actions から自動生成） -->
-    <!-- ============================================================ -->
-    <section class="section" id="actions">
-      <div class="sec-head">
-        <p class="sec-head__en" aria-hidden="true">Action Items</p>
-        <h2 class="sec-head__title">今やること（チーム別）</h2>
-      </div>
-      <p class="hub-lead">10/30の会議で出た宿題です。チーム名（→）を押すと、そのチームのページへ移ります。期限が決まっていないものは「未定」としています。</p>
-      <div class="action-board" id="actionBoard"><!-- ops-nav.js が生成 --></div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- 決まったこと（ops-config.js の decisions から自動生成） -->
-    <!-- ============================================================ -->
-    <section class="section" id="decisions">
-      <div class="sec-head">
-        <p class="sec-head__en" aria-hidden="true">Decisions</p>
-        <h2 class="sec-head__title">決まったこと（10/30 第1回運営リーダー会議）</h2>
-      </div>
-      <p class="hub-lead">「決定」は決まったこと、「方向・検討中」は方向が決まって検討を続けているものです。タイトルを押すと詳しい説明が開き、これまでの決定は<a href="log.html">決定事項ログ</a>で見られます。</p>
-      <ul class="decision-list" id="decisionList"><!-- ops-nav.js が生成 --></ul>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- 未確定事項（ops-config.js の todos から自動生成） -->
-    <!-- ============================================================ -->
-    <section class="section" id="todos">
-      <div class="sec-head">
-        <p class="sec-head__en" aria-hidden="true">Open Items</p>
-        <h2 class="sec-head__title">未確定事項（<span id="todoCount">--</span>件）</h2>
-      </div>
-      <ul class="todo-list" id="todoList"><!-- ops-nav.js が生成 --></ul>
-      <p class="caption" style="margin-top:12px;">決まったものから順に、この一覧から外し、各ページの本文に反映します。</p>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- チーム一覧（ops-config.js の teams から自動生成） -->
-    <!-- ============================================================ -->
-    <section class="section" id="teams">
-      <div class="sec-head">
-        <p class="sec-head__en" aria-hidden="true">Teams</p>
-        <h2 class="sec-head__title">運営チーム（10/30確定）</h2>
-      </div>
-      <div class="card-grid" id="teamsGrid"><!-- ops-nav.js が生成 --></div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- CONTENT:pages | ページ一覧 -->
-    <!-- ============================================================ -->
-    <section class="section" id="pages">
-      <div class="sec-head">
-        <p class="sec-head__en" aria-hidden="true">Pages</p>
-        <h2 class="sec-head__title">運営ページ一覧</h2>
-      </div>
-      <div class="card-grid">
-        <a class="card" href="overview.html">
-          <div class="card__head"><h3 class="card__title">合宿概要</h3></div>
-          <p class="card__desc">開催日時・規模・主催・会場の確定状況・2026実績・2027方針</p>
-        </a>
-        <a class="card" href="venue.html">
-          <div class="card__head"><h3 class="card__title">会場</h3></div>
-          <p class="card__desc">講堂の席レイアウト図・下見動画7本・視察メモ・大学との調整状況・入退場の動線</p>
-        </a>
-        <a class="card" href="schedule.html">
-          <div class="card__head"><h3 class="card__title">スケジュール</h3></div>
-          <p class="card__desc">開催までの工程・前泊と前日設営・当日の時間割</p>
-        </a>
-        <a class="card" href="teams/index.html">
-          <div class="card__head"><h3 class="card__title">チーム</h3></div>
-          <p class="card__desc">各チームの役割分担・今やること・会場の情報・決定事項</p>
-        </a>
-        <a class="card" href="rules.html">
-          <div class="card__head"><h3 class="card__title">運営ルール</h3></div>
-          <p class="card__desc">セミナー運営ルール・当日の心得・情報取り扱い</p>
-        </a>
-        <a class="card" href="budget.html">
-          <div class="card__head"><h3 class="card__title">制作物・収支</h3></div>
-          <p class="card__desc">制作物一覧・発注ステータス・収支の管理方針</p>
-        </a>
-        <a class="card" href="log.html">
-          <div class="card__head"><h3 class="card__title">決定事項ログ</h3></div>
-          <p class="card__desc">日付・決定内容・決定者・出典の追記式ログ</p>
-        </a>
-        <a class="card" href="links.html">
-          <div class="card__head"><h3 class="card__title">リンク集</h3></div>
-          <p class="card__desc">配属シート・下見動画のフォルダ・案内図・関連資料への入口</p>
-        </a>
-        <a class="card" href="tools/seating.html">
-          <div class="card__head"><h3 class="card__title">席割ツール</h3><span class="badge badge--todo"><span class="badge__dot"></span>準備中</span></div>
-          <p class="card__desc">席割・グループ編成ツール（2027版は準備中）</p>
-        </a>
-      </div>
-    </section>
-    <!-- /CONTENT:pages -->
-
-    <!-- ============================================================ -->
-    <!-- 更新履歴（ops-config.js の updates から自動生成・直近5件） -->
-    <!-- ============================================================ -->
-    <section class="section" id="updates">
-      <div class="sec-head">
-        <p class="sec-head__en" aria-hidden="true">Updates</p>
-        <h2 class="sec-head__title">更新履歴</h2>
-      </div>
-      <ul class="update-list" id="updatesList"><!-- ops-nav.js が生成 --></ul>
-    </section>
-
-  </div>
-</main>
-
-<footer class="ops-footer">
-  <p>PBC合宿2027 運営ハブ｜このページのURLは運営メンバー限定です</p>
-</footer>
-
-</body>
+    </footer>
+  </body>
 </html>

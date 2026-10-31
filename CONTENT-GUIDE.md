@@ -25,22 +25,23 @@
 | キー | 内容 | 反映先 |
 |---|---|---|
 | `eventDate` | 開催日 | ハブトップのカウントダウン |
-| `nav` | グローバルナビ | 全運営ページのナビ |
+| `nav` | グローバルナビ（`minor: true` はリーダー向けの小リンク） | 全運営ページのナビ |
+| `notice` | お知らせの帯 | 全員向けトップ |
 | `teams` | チーム定義（slug/name/leader/members/mission/status） | ナビ・チーム一覧・ハブトップ |
-| `updates` | 更新履歴（新しい順・先頭に追加） | ハブトップ（直近5件） |
-| `todos` | 未確定事項 | ハブトップの未確定一覧・件数 |
-| `decisions` | 決まったこと（`level`: `done`=決定／`doing`=方向・検討中。新しいものを先頭に） | ハブトップ「決まったこと」 |
-| `upcoming` | 次の日程（`state`: `done`／`next`／`plan`） | ハブトップ「次の日程」 |
-| `actions` | 今やること（`team` はチームのslug、`all` は全チームのリーダー向け。`status`: `todo`／`doing`／`done`） | ハブトップ「今やること」（チーム別）と、各チームページの「今やること」 |
+| `updates` | 更新履歴（新しい順・先頭に追加） | 全員向けトップ（直近3件）・リーダー向け（全件） |
+| `todos` | 未確定事項 | リーダー向けの未確定一覧・件数 |
+| `decisions` | 決まったこと（`level`: `done`=決定／`doing`=方向・検討中。新しいものを先頭に） | リーダー向け「決まったこと」 |
+| `upcoming` | 次の日程（`state`: `done`／`fixed`／`plan`／`tbd`） | リーダー向け「次の日程」 |
+| `actions` | 今やること（`team` はチームのslug、`all` は全チームのリーダー向け。`status`: `todo`／`doing`／`done`） | リーダー向け「今やること」（チーム別）と、各チームページの「今やること」 |
 
 `status` は `"todo"`（準備中）/`"doing"`（進行中）/`"done"`（完了）。
 
 ## チーム追加の4ステップ
 
 1. `ops-jx9rmblg/teams/_template.html` を複製し `teams/<slug>.html` を作成（slugは小文字英字ローマ字）
-2. 複製ファイルの `<title>`・page-heroの`<h1>`・パンくず末尾のチーム名を書き換える
+2. 複製ファイルの `<title>`・page-heroの`<h1>`・パンくず末尾のチーム名と `#actionBoard` の `data-team` をslugに書き換える
 3. `ops-jx9rmblg/js/ops-config.js` の `teams` 配列に1行追加
-4. push（ナビ・チーム一覧カード・ハブトップは自動反映。他ファイルの編集不要）
+4. 新チームの役割・基本情報・前日と当日の動き・持ち物と関連リンクを記入し、変更を確認する。チーム一覧とリーダー向けの宿題は設定から生成される。
 
 チーム削除は逆順（configから行削除→HTMLを削除）。改名はconfigの`name`変更＋該当HTML内の表記変更（slugとファイル名は変えない方が安全）。
 
@@ -49,11 +50,13 @@
 | ファイル | CONTENT ID | 内容 |
 |---|---|---|
 | `index.html`（参加者） | purpose / theme / overview / program / guide / access / first / faq / cancel / contact / updated | 参加者向け全セクション。faqにAPPENDあり。**updated=フッターの最終更新日（参加者ページを編集したら必ず当日日付に書き換える）** |
-| `ops-…/index.html` | pages | ページ一覧カード（決まったこと・次の日程・今やること・未確定事項・チーム・更新履歴は ops-config.js から自動生成） |
+| `ops-…/index.html` | countdown / updatesList | お知らせ・開催情報・6つの入口・直近3件の更新 |
+| `ops-…/leaders.html` | actions / decisions / todos / upcoming / pages / updates | リーダー向け一覧。データは ops-config.js から生成 |
+| `ops-…/faq.html` | — | 運営メンバー向けFAQの正本Markdownに合わせる |
 | `ops-…/overview.html` | basic / venue-status / policy / results2026 / notation | 概要・会場ステータス・方針 |
 | `ops-…/venue.html` | kodo / layout / videos / inspection / kakurinbo / kuonji / access / visits | 大学講堂の状況・席レイアウト図・下見動画・視察メモ・覚林坊・入場と退場の動線・アクセス＋下見記録（APPEND）。図や静止画は `ops-jx9rmblg/img/` に置く |
 | `ops-…/schedule.html` | milestones / daybefore / dayof / ref2026 | 工程・前日・当日 |
-| `ops-…/rules.html` | seminar / info-handling | 運営ルール |
+| `ops-…/rules.html` | seminar / tablestaff / info-handling | 運営ルール |
 | `ops-…/budget.html` | items / cost2026 / sheets | 制作物（APPEND）・収支 |
 | `ops-…/log.html` | howto / log | 決定事項ログ（APPEND） |
 | `ops-…/links.html` | links | リンク集カード |
@@ -95,7 +98,18 @@
 
 ## デザインシステム簡易リファレンス
 
-- CSS変数・共通コンポーネントは `assets/css/site.css` 冒頭、運営専用は `ops-jx9rmblg/css/ops.css` を参照
-- 主要コンポーネント: `.sec-head`（セクション見出し）／`.card`+`.card-grid`／`.table`+`.table-wrap--scroll`／`.timeline`+`.tl-item`／`.badge--todo|doing|done|warn|danger`／`.handover-box`（2026引き継ぎ）／`.info-box`・`.warn-box`／`.tbd`
-- 新しい色・フォント・角丸を**勝手に追加しない**（和紙×濃紺×金×朱の4系統で完結させる）
-- 朱色（`--shu`）は1画面3箇所まで。金は面塗り禁止（罫線・ラベルのみ）
+- 運営ハブのスタイルは `ops-jx9rmblg/css/ops.css` に集約する。
+- 白 `#FFFFFF`、区切り面 `#F5F6F7`、本文 `#2B2B30`、補足 `#6B6B72`、罫線 `#E3E4E8`。アクセントは紺 `#1C2B4A`、注意は朱 `#B5442C` を1画面2か所まで。金は使わない。
+- Noto Sans JP 400・500・700。本文16px・行高1.8、ページ見出し28px・区切り見出し20px。スマホでは24px・18px。
+- カードの角は12px、ボタンは8px。影は使わないかごく薄く。区切り間は56px、スマホでは40px、左右16px。
+- 状態札は灰色の濃淡と文字で区別し、進行中は紺の枠。入口のアイコンは単色のインラインSVG。英字の小ラベルは使わない。
+- スマホでは表を縦のカードにし、各 `td` の `data-label` に列見出しを設定する。
+- 全員向けページで途中経過だけを伝える文や未定の行は、同じページ末尾の「リーダー向けのメモ」に移し、元のIDとリンクを保つ。
+
+### 運営ハブの運用補足
+
+- 会場名は確定まで「候補」を付ける。
+- 公開リポジトリではURLを知る第三者が運営ハブのソースやパスを閲覧できる。短縮URLやQRコード生成サービスに運営URLを入力しない。
+- 決定事項はログに集約し、新しい決定を表の一番上に追加する。議事録の原本はGoogle Docs等に置き、ログには要点とリンクを残す。
+- チームページは `_template.html` の役割・リーダーと人数・今やること・前日と当日の動き・持ち物と関連リンク・末尾の参考情報の順に編集する。
+- 運営ハブは検索エンジン非掲載（noindex, nofollow）の限定URLで運用する。

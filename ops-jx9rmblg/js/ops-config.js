@@ -12,16 +12,14 @@ var OPS_CONFIG = {
 
   /* グローバルナビ（表示順のまま描画される） */
   nav: [
-    { href: "index.html",         label: "ハブトップ" },
-    { href: "overview.html",      label: "合宿概要" },
-    { href: "venue.html",         label: "会場" },
-    { href: "schedule.html",      label: "スケジュール" },
-    { href: "teams/index.html",   label: "チーム" },
-    { href: "rules.html",         label: "運営ルール" },
-    { href: "budget.html",        label: "制作物・収支" },
-    { href: "log.html",           label: "決定事項ログ" },
-    { href: "links.html",         label: "リンク集" }
+    { href: "index.html", label: "トップ" },
+    { href: "teams/index.html", label: "チーム" },
+    { href: "schedule.html", label: "当日の流れ" },
+    { href: "venue.html", label: "会場" },
+    { href: "faq.html", label: "よくある質問" },
+    { href: "leaders.html", label: "リーダー向け", minor: true }
   ],
+  notice: "12/4（金）19:00〜21:00 運営全体のキックオフ（オンライン）。参加のURLは運営LINEグループでお知らせしています",
 
   /* 運営チーム定義
      - チーム追加: この配列に1行追加し、teams/_template.html を複製して
@@ -125,7 +123,7 @@ var OPS_CONFIG = {
     { team: "all",       who: "各リーダー",   what: "チームのLINEグループを作り、メンバーを招待する", due: "11月中", status: "todo" },
     { team: "all",       who: "各リーダー",   what: "12/4のキックオフの後に、チームのキックオフを開く", due: "年内", status: "todo" },
     { team: "all",       who: "各リーダー",   what: "予算が要るもの（インカム・ビブス・縦看板など）をチームでまとめて白都へ伝える", due: "必要になったら", status: "todo" },
-    { team: "kaijo",     who: "掛布さん",     what: "丸茂さんへ確認する：前日から入れるか、当日朝は何時から入れるか、撤去を終える期限（7時か8時か。時刻の意味は要確認）、時間割（受付9:30・開会10:30）の承認、学長のご挨拶を冒頭に入れる件。返事が来たら共有する", due: "返事が来たら共有", status: "doing" },
+    { team: "kaijo",     who: "掛布さん",     what: "丸茂さんへ確認する：前日から入れるか、当日朝は何時から入れるか、撤去を終える期限、時間割（受付9:30・開会10:30）の承認、学長のご挨拶を冒頭に入れる件。返事が来たら共有する", due: "返事が来たら共有", status: "doing" },
     { team: "kaijo",     who: "掛布さん",     what: "246名を保ったまま、扇形（ハの字）の席レイアウト案を作り、運営リーダー会のチャットに出して意見をもらう", due: "未定", status: "todo" },
     { team: "kaijo",     who: "掛布さん",     what: "一時受付（仮受付）について丸茂さんから聞いた話を、受付の米森さんへ引き継ぐ（動画は会議中にリーダー会のChatworkへ共有済み）", due: "未定", status: "todo" },
     { team: "kaijo",     who: "梅原薫さん",   what: "備品・後処理に配属した成島さん・中村さんに声をかけ、役割を伝える", due: "未定", status: "todo" },
