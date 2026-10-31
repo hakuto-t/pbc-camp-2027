@@ -33,7 +33,7 @@ var OPS_CONFIG = {
     { slug: "yudo",      name: "誘導チーム",     leader: "出口さん（サブ: 川又さん・福上玲央さん）", members: "38名", mission: "駐車場・ゴンドラ・お寺の入口から受付まで、帰りの退場誘導、靴を入れる袋の受け渡し", status: "doing" },
     { slug: "uketsuke",  name: "受付チーム",     leader: "米森さん（受付ユニット: 梅原沙織さん／席案内ユニット: 安立さん）", members: "26名", mission: "仮受付・本受付・クローク・受付後の席案内", status: "doing" },
     { slug: "moshikomi", name: "申込管理チーム", leader: "奈津美さん", members: "3名", mission: "申込・入金管理・参加者名簿。当日は受付を手伝う", status: "doing" },
-    { slug: "ts",        name: "ビットチーム",   leader: "横山さん・大岡さん", members: "6名（マイク係2名を含む）", mission: "ビット・マイク係", status: "doing" },
+    { slug: "ts",        name: "ビットチーム",   leader: "横山さん・大岡さん", members: "6名（マイク係2名を含む）", mission: "マイク係ほか", status: "doing" },
     { slug: "shukuhaku", name: "宿泊・ケータリングチーム", leader: "上嶋さん", members: "4名", mission: "運営メンバーの前泊の宿・当日の昼食（参加者全員分を覚林坊が引き受け）・ケータリング", status: "doing" }
   ],
 
