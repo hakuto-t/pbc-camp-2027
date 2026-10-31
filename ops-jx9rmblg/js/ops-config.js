@@ -131,7 +131,7 @@ var OPS_CONFIG = {
     { team: "yudo",      who: "出口さん・川又さん・福上玲央さん", what: "動線を確かめて曲がり角の数を数え、どこに何人置くか（行き・帰り）の配置案をまとめる", due: "年内", status: "todo" },
     { team: "yudo",      who: "誘導チーム",   what: "下駄箱で渡す靴用の袋を買う（参加人数が決まる2月末の後）", due: "3月中", status: "todo" },
     { team: "yudo",      who: "誘導のコアメンバー", what: "現地を下見する（駐車場から講堂まで、帰りの道）", due: "年内", status: "todo" },
-    { team: "uketsuke",  who: "米森さん",     what: "人物DBで、配属シートの名前とLINE IDを付け合わせて白都へ連絡する（運営全員をLINEに招待するため）", due: "10/26", status: "done" },
+    { team: "uketsuke",  who: "米森さん",     what: "人物DBで、配属シートの名前とLINE IDを付け合わせて白都へ連絡する（運営全員をLINEに招待するため）", due: "10/30", status: "doing" },
     { team: "uketsuke",  who: "米森さん・梅原沙織さん・安立さん", what: "仮受付と本受付の2段の受付を設計する（誘導チームと連携）。受付ユニットと席案内ユニットの人数配分も決める", due: "年内", status: "todo" },
     { team: "uketsuke",  who: "受付チーム",   what: "靴に番号シールを貼ってクロークのように預かるかを決める", due: "未定", status: "todo" },
     { team: "uketsuke",  who: "米森さん",     what: "受付の役割（掲示物・名札づくり・担当）を細かく決め、名札の不足数を出す（在庫は約160個）", due: "未定", status: "todo" },
